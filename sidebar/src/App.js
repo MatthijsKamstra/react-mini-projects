@@ -1,4 +1,5 @@
 import React from "react";
+import Ficons from "./Ficons";
 
 import "./App.css"
 
@@ -6,27 +7,37 @@ class Foobar extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.linkArray = [];
+        this.colors = ["#001f3f", "#0074d9", "#7fdbff", "#39cccc", "#3d9970", "#2ecc40", "#01ff70", "#ffdc00", "#ff851b", "#ff4136", "#f012be", "#b10dc9", "#85144b", "#ffffff", "#dddddd", "#aaaaaa", "#111111"];
+
         this.state = {
+            isVertical: true,
             persons: [],
         };
     }
 
-    componentDidMount() {
-    }
+    componentDidMount() { }
 
     componentWillUnmount() { }
 
     onToggleHandler(e) {
-        e.prefentdefault();
-        let ul = window.document.querySelector("[monkee-fullpage]");
-        if (this.isVertical) {
-            this.innerHTML = "<i class=\"fa fa-arrows-v\" aria-hidden=\"true\"></i>";
-            this.isVertical = false;
-            ul.classList.add("monkee-fullpage-list-horizontal");
+        e.preventDefault();
+        console.log(this.state.isVertical);
+
+        // let ul = window.document.querySelector("[monkee-fullpage]");
+        if (this.state.isVertical) {
+            // console.log('xxxx');
+            // ul.classList.add("monkee-fullpage-list-horizontal");
+            this.setState({
+                isVertical: false,
+            })
         } else {
-            this.innerHTML = "<i class=\"fa fa-arrows-h\" aria-hidden=\"true\"></i>";
-            this.isVertical = true;
-            ul.classList.remove("monkee-fullpage-list-horizontal");
+            // console.log('yyyy');
+            // ul.classList.remove("monkee-fullpage-list-horizontal");
+            this.setState({
+                isVertical: true,
+            })
         }
     }
 
@@ -38,25 +49,26 @@ class Foobar extends React.Component {
                         <div className="activitybar-top">
                             <div className="sep">
                                 <a className="activitybar-btn" href="#new-document" role="button" id="btn-new" title="New document">
-                                    <i className="fa fa-file-text-o" aria-hidden="true"></i>
+                                    <Ficons icon='fa-file-text-o' />
                                 </a>
                                 <a className="activitybar-btn" href="#save-document" role="button" id="btn-save"
                                     title="Save current document">
-                                    <i className="fa fa-floppy-o" aria-hidden="true"></i>
+                                    <Ficons icon='fa-floppy-o' />
                                 </a>
                             </div>
                             <div className="sep">
                                 <a className="activitybar-btn" href="#preview" role="button" id="btn-preview" title="Live preview">
-                                    <i className="fa fa-eye" aria-hidden="true"></i>
+                                    <Ficons icon='fa-eye' />
                                 </a>
                                 <a className="activitybar-btn" href="#distraction" role="button" id="btn-fullscreen"
                                     title="Distraction free">
-                                    <i className="fa fa-arrows-alt" aria-hidden="true"></i>
+                                    <Ficons icon='fa-arrows-alt' />
                                 </a>
                                 <a className="activitybar-btn" href="#headphone" role="button" id="btn-headphone"
                                     title="Buy me a new headphone">
-                                    <i className="fa fa-headphones" aria-hidden="true"></i>
+                                    <Ficons icon='fa-headphones' />
                                 </a>
+
 
                             </div>
 
@@ -65,15 +77,15 @@ class Foobar extends React.Component {
                         <div className="activitybar-bottom">
                             <a className="activitybar-btn" href="https://github.com/MatthijsKamstra/javascript-mini-projects"
                                 target="_blank" rel="noreferrer" role="button" id="btn-save" title="Github">
-                                <i className="fa fa-github" aria-hidden="true"></i>
+                                <Ficons icon='fa-github' />
                             </a>
                             <a className="activitybar-btn" href="https://twitter.com/matthijskamstra" target="_blank" rel="noreferrer" role="button"
                                 id="btn-save" title="Twitter">
-                                <i className="fa fa-twitter" aria-hidden="true"></i>
+                                <Ficons icon='fa-twitter' />
                             </a>
 
                             <a onClick={(e) => this.onToggleHandler(e)} className="activitybar-btn" href="#d" rel="noreferrer" role="button" id="btn-toggle-dir" title="change direction">
-                                <i className="fa fa-arrows-h" aria-hidden="true"></i>
+                                <Ficons icon={(this.state.isVertical) ? 'fa-arrows-h' : 'fa-arrows-v'} />
                             </a>
 
                         </div>
