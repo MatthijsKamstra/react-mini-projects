@@ -22,8 +22,6 @@ function App() {
 
 	useEffect(() => {
 		const myTimeout = setTimeout(startTime, 500);
-
-
 		// console.log('Setup effect App');
 		return () => {
 			// console.log('Cleanup effect App');
