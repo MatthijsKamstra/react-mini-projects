@@ -68,8 +68,6 @@ class Foobar extends React.Component {
                                     title="Buy me a new headphone">
                                     <Ficons icon='fa-headphones' />
                                 </a>
-
-
                             </div>
 
                         </div>
