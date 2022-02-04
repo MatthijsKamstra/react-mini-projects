@@ -1,0 +1,25 @@
+q {
+  quotes: "“" "”" "‘" "’";
+}
+
+q::before {
+  content: open-quote;
+}
+
+q::after {
+  content: close-quote;
+}
+
+#quote-text {
+  color: black;
+}
+
+#quote-author {
+  font-weight: bold;
+  color: gray;
+}
+
+#quote-author a {
+  color: gray;
+  text-decoration: underline;
+}

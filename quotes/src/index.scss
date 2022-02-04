@@ -1,0 +1,29 @@
+/**
+7-1 Sass Architecture
+
+- https://sass-guidelin.es/#the-7-1-pattern
+- https://gist.github.com/rveitch/84cea9650092119527bc
+**/
+
+// abstracts
+@import "./styles/abstracts/variables";
+
+// vendors
+@import "./styles/vendors/bootstrap";
+@import "./styles/vendors/ficons";
+
+// base
+@import "./styles/base/colors";
+@import "./styles/base/base";
+
+// layout
+
+// components / modules
+
+// pages
+
+// themes
+
+// utils
+
+
