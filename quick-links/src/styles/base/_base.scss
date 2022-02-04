@@ -1,0 +1,43 @@
+// Set up layout to push the Footer to the bottom
+html,
+body {
+  height: 100%;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+// change `$react-root-id` in `_variables` to wrap scss for specific root id style name
+#{$react-root-id},
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  main {
+    flex-shrink: 0;
+    > .container {
+      padding: 60px 15px 0;
+    }
+  }
+}
+
+// reset blue focus color
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: $black !important;
+  box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25) !important; // override bootstrap colors/box-shadow
+}
+
+// hmmmm
+.hidden {
+  visibility: hidden;
+}
+.display-none {
+  display: none !important;
+}
+
+
