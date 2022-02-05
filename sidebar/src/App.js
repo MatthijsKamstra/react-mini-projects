@@ -5,13 +5,10 @@ import "./App.css"
 
 function App() {
 
-
-    const [isVertical, setisVertical] = useState(true);
-
-
     const linkArray = [];
     const colors = ["#001f3f", "#0074d9", "#7fdbff", "#39cccc", "#3d9970", "#2ecc40", "#01ff70", "#ffdc00", "#ff851b", "#ff4136", "#f012be", "#b10dc9", "#85144b", "#ffffff", "#dddddd", "#aaaaaa", "#111111"];
 
+    const [isVertical, setisVertical] = useState(true);
 
     useEffect(() => {
         // change bg color slides (voor visual effect)
