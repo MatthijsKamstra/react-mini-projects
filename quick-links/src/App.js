@@ -7,25 +7,38 @@ import { superHeroName } from './util';
 
 function App() {
 
-	const basisArr = ["https://haxe.org/", "https://getbootstrap.com/docs/5.1/getting-started/introduction/", "https://github.com/MatthijsKamstra?tab=repositories", "https://www.disneyplus.com/en-gb/", "https://www.netflix.com/", "https://tv.kpn.com/", "https://ficons.fiction.com/reference.html", "https://forecastapp.com/1389043/schedule/team", "https://fonkamsterdam1.harvestapp.com/time", "https://calendar.google.com/calendar/", "https://translate.google.com/"];
+	const basisArr = [
+		"https://haxe.org/",
+		"https://getbootstrap.com/docs/5.1/getting-started/introduction/",
+		"https://github.com/MatthijsKamstra?tab=repositories",
+		"https://www.disneyplus.com/en-gb/",
+		"https://www.netflix.com/",
+		"https://tv.kpn.com/",
+		"https://ficons.fiction.com/reference.html",
+		"https://forecastapp.com/1389043/schedule/team",
+		"https://fonkamsterdam1.harvestapp.com/time",
+		"https://calendar.google.com/calendar/",
+		"https://translate.google.com/"
+	];
 
 	const storageName = 'test-QuickLinks';
 	const [json, setJson] = useLocalStorage(storageName, "");
 
 	const ref = useRef(null);
 	const textAreaRef = useRef(null);
-	//
 
-
-	useEffect(() => {
-		console.log('Setup effect App');
-		console.log(ref.current);
-		return () => {
-			console.log('Cleanup effect App');
-		}
-	}, []);
+	// useEffect(() => {
+	// 	console.log('Setup effect App');
+	// 	console.log(ref.current);
+	// 	return () => {
+	// 		console.log('Cleanup effect App');
+	// 	}
+	// }, []);
 
 	// ____________________________________ update ____________________________________
+
+
+
 
 
 	function updateOutput() {
@@ -59,6 +72,7 @@ function App() {
 						{obj.url}
 					</a>
 					<a
+						onClick={onEditHandler}
 						href="#sss"
 						data-uniq={obj._id}
 						className="quicklink-edit-btn btn btn-sm btn-outline-danger"><i className="fa fa-edit"></i></a>
@@ -71,10 +85,7 @@ function App() {
 
 	// ____________________________________ onHandlers ____________________________________
 
-	function onAddHandler(e) {
-		e.preventDefault();
-		console.log('onAddHandler');
-	}
+
 
 	function onClearHandler(e) {
 		e.preventDefault();
@@ -94,6 +105,12 @@ function App() {
 		console.log('onRandomHandler');
 		let item = basisArr[Math.floor(Math.random() * basisArr.length)];
 		ref.current.value = item;
+		onAddHandler(e);
+	}
+
+	function onAddHandler(e) {
+		e.preventDefault();
+		console.log('onAddHandler');
 
 		let counter = 0;
 		for (let i = 0; i < json.length; i++) {
@@ -104,7 +121,7 @@ function App() {
 
 		let _superHeroName = superHeroName();
 		let obj = {
-			_id: `${new Date().getTime()} - ${Math.floor(Math.random() * 1000)} - ${Math.floor(Math.random() * 1000)}`,
+			_id: `${new Date().getTime()}-${Math.floor(Math.random() * 1000)}-${Math.floor(Math.random() * 1000)}`,
 			url: (ref.current.value),
 			name: _superHeroName,
 			created: new Date().toISOString(),
@@ -123,12 +140,18 @@ function App() {
 		updateOutput();
 	}
 
+	function onEditHandler(e) {
+		e.preventDefault();
+		console.log('WIP onEditHandler');
+		window.alert('WIP');
+	}
+
 	return (
 		<main>
 			<div className="container">
 				<div className="row justify-content-center">
 					<div className="col-12">
-						<h1>quickLinks</h1>
+						<h1>Quick Links</h1>
 						<div className="input-group mb-3">
 							<input
 								ref={ref}
@@ -148,6 +171,14 @@ function App() {
 						</div>
 					</div>
 
+					<div className="col-12 mb-3">
+						<div className="btn-group" role="group" aria-label="Basic example">
+							<button id="js-btn-clear" className="btn btn-danger" onClick={onClearHandler}>clear</button>
+							<button id="js-btn-read" className="btn btn-dark" onClick={onReadHandler}>read</button>
+							<button id="js-btn-random" className="btn btn-warning" onClick={onRandomHandler}>Add random</button>
+						</div>
+					</div>
+
 					<div className="mb-3">
 						<label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
 						<textarea
@@ -164,13 +195,8 @@ function App() {
 							</ul>
 						</div>
 					</div>
-					<div className="col-12">
-						<div className="btn-group" role="group" aria-label="Basic example">
-							<button id="js-btn-clear" className="btn btn-danger" onClick={onClearHandler}>clear</button>
-							<button id="js-btn-read" className="btn btn-dark" onClick={onReadHandler}>read</button>
-							<button id="js-btn-random" className="btn btn-warning" onClick={onRandomHandler}>Add random</button>
-						</div>
-					</div>
+
+
 				</div>
 			</div>
 			{/* <!-- /.container --> */}
